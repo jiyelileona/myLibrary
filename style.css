@@ -17,20 +17,54 @@ body {
   font-size: 2rem;
 }
 
+div.button {
+  width: 30px;
+  height: 30px;
+  transform: translate(-5%, 40%);
+}
+
 #line1 {
   position: absolute;
   width: 30px;
-  height: 3px;
+  height: 5px;
   background: #ffffff;
+  border-radius: 2px;
 }
 
 #line2 {
   width: 30px;
-  height: 3px;
+  height: 5px;
   background: #ffffff;
   transform: rotate(90deg);
+  border-radius: 2px;
 }
 
-.form {
-  display: none;
+form {
+  background-color: #c6adef;
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 50vh;
+  align-items: center;
+  margin: auto;
+  margin-right: 0%;
+  justify-content: space-evenly;
+  clip-path: circle(100px at 95% -30%);
+  transition: all 0.6s cubic-bezier(0.42, 0.0, 1.0, 1.0);
+}
+
+form.open {
+  clip-path: circle(1000px at 90% -30%);
+}
+
+input[type="text"] {
+  line-height: 1.25rem;
+  border-radius: 0.5rem;
+}
+
+#submitButton {
+  padding: 0.375em 1.25em;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  font-size: 0.9em;
 }
