@@ -31,7 +31,7 @@ function scriptsTask() {
     .pipe(sourcemaps.init())
     .pipe(uglify())
     .pipe(sourcemaps.write())
-    .pipe(dest('dist/js'));
+    .pipe(dest('dist'));
 }
 
 exports.html = htmlTask;
