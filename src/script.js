@@ -16,14 +16,20 @@ class Book {
   }
 }
 
+function clearForm() {
+  bookName.value = '';
+  author.value = '';
+  pagesNum.value = '';
+}
+
 form.addEventListener('submit', function (e) {
   e.preventDefault();
   document.querySelector('input[name = "readed"]:checked').value === 'true' ? true : false;
   let isReaded = document.querySelector('input[name = "readed"]:checked').value;
-  const newBook = new Book(bookName.value, author.value, pagesNum.value, isReaded)
+  const newBook = new Book(bookName.value, author.value, pagesNum.value, isReaded);
   library.push(newBook);
+  clearForm();
 });
-
 
 addBookButton.addEventListener('click', function () {
   form.classList.toggle('open');
