@@ -29,6 +29,11 @@ div.button {
   height: 5px;
   background: #ffffff;
   border-radius: 2px;
+  transition: all 0.4s ease-in-out;
+}
+
+.button.open #line1 {
+  transform: rotate(-45deg);
 }
 
 #line2 {
@@ -37,6 +42,11 @@ div.button {
   background: #ffffff;
   transform: rotate(90deg);
   border-radius: 2px;
+  transition: all 0.4s ease-in-out;
+}
+
+.button.open #line2 {
+  transform: rotate(45deg);
 }
 
 form {
