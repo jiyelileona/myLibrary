@@ -70,6 +70,7 @@ form.open {
 .form {
   z-index: 100;
   position: absolute;
+  right: 0;
 }
 
 input[type='text'] {
@@ -89,7 +90,6 @@ input[type='text'] {
 #library {
   position: relative;
   display: grid;
-  margin-top: 5%;
   grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(autofill, minmax(50%, 75%));
   height: 100%;
