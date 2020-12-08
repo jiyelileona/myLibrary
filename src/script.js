@@ -16,6 +16,13 @@ class Book {
   }
 }
 
+function checkFormValidation() {
+  if (bookName.value.length === 0 || author.value.length === 0 || pagesNum.value.length === 0) {
+    alert('Please fill all the fields');
+    return;
+  }
+}
+
 function clearForm() {
   bookName.value = '';
   author.value = '';
@@ -26,6 +33,7 @@ form.addEventListener('submit', function (e) {
   e.preventDefault();
   document.querySelector('input[name = "readed"]:checked').value === 'true' ? true : false;
   let isReaded = document.querySelector('input[name = "readed"]:checked').value;
+  checkFormValidation();
   const newBook = new Book(bookName.value, author.value, pagesNum.value, isReaded);
   library.push(newBook);
   clearForm();
