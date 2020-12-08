@@ -1,5 +1,5 @@
 body {
-  background-color: #ffffff;
+  background-color: #e7ddf8;
   margin: 0;
   padding: 0;
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -79,4 +79,22 @@ input[type="text"] {
   font-size: 0.9em;
   text-align: center;
   width: 4em;
+}
+
+#library{
+  position: relative;
+	display: grid;
+	margin-top: 5%;
+	grid-template-columns: repeat(4,auto);
+	grid-template-rows: repeat(autofill,minmax(50%,75%));
+	height: 100%;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 5%;
+  margin: 5%;
+  background-color: #efaaae;
 }

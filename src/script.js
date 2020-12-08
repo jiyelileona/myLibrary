@@ -4,7 +4,7 @@ const submitButton = document.querySelector('#submitButton');
 const bookName = document.querySelector('#bookName');
 const author = document.querySelector('#author');
 const pagesNum = document.querySelector('#pagesNumber');
-
+const books = document.querySelector('#library');
 let library = [];
 
 class Book {
@@ -33,6 +33,34 @@ function updateLocalStorage() {
   localStorage.setItem('library', JSON.stringify(library));
 }
 
+function checkLocalStorage() {
+  if (localStorage.getItem('library')) {
+    library = JSON.parse(localStorage.getItem('library'));
+  } else {
+    library = [];
+  }
+}
+
+function render() {
+  checkLocalStorage();
+  console.log(library);
+  books.innerHTML = '';
+  library.forEach(book => {
+    const bookHTLM = `
+      <div class="book">
+        <button id="delete">❌</button>
+        <div id="bookName">${book.bookName}</div>
+        <div id="author">${book.author}</div>
+        <div id="pagesNum">${book.pagesNum}</div>
+        <button>${book.isReaded}</button>
+      </div>
+    `;
+    books.innerHTML += bookHTLM;
+  });
+}
+
+render();
+
 form.addEventListener('submit', function (e) {
   e.preventDefault();
   document.querySelector('input[name = "readed"]:checked').value === 'true' ? true : false;
@@ -40,7 +68,7 @@ form.addEventListener('submit', function (e) {
   checkFormValidation();
   const newBook = new Book(bookName.value, author.value, pagesNum.value, isReaded);
   library.push(newBook);
-  updateLocalStorage()
+  updateLocalStorage();
   clearForm();
 });
 
