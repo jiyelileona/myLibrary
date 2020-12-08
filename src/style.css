@@ -67,6 +67,11 @@ form.open {
   clip-path: circle(1000px at 90% -30%);
 }
 
+.form {
+  z-index: 100;
+  position: absolute;
+}
+
 input[type="text"] {
   line-height: 1.25rem;
   border-radius: 0.5rem;
