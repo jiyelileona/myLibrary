@@ -29,6 +29,10 @@ function clearForm() {
   pagesNum.value = '';
 }
 
+function updateLocalStorage() {
+  localStorage.setItem('library', JSON.stringify(library));
+}
+
 form.addEventListener('submit', function (e) {
   e.preventDefault();
   document.querySelector('input[name = "readed"]:checked').value === 'true' ? true : false;
@@ -36,6 +40,7 @@ form.addEventListener('submit', function (e) {
   checkFormValidation();
   const newBook = new Book(bookName.value, author.value, pagesNum.value, isReaded);
   library.push(newBook);
+  updateLocalStorage()
   clearForm();
 });
 
