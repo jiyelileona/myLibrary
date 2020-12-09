@@ -66,6 +66,18 @@ function render() {
 
 render();
 
+function deleteBook(index) {
+  library.splice(index, 1);
+}
+
+function findBook(bookName) {
+  for (let book of library) {
+    if (book.bookName === bookName) {
+      return library.indexOf(book);
+    }
+  };
+}
+
 form.addEventListener('submit', function (e) {
   e.preventDefault();
   checkFormValidation();
@@ -77,4 +89,15 @@ form.addEventListener('submit', function (e) {
 addBookButton.addEventListener('click', function () {
   form.classList.toggle('open');
   addBookButton.classList.toggle('open');
+});
+
+books.addEventListener('click', function (e) {
+  const target = e.target.parentNode;
+  console.log(target.closest('.book'));
+  if (e.target.id == 'delete') {
+    let index= findBook(target.querySelector('#bookName').innerHTML);
+    deleteBook(index);
+    updateLocalStorage()
+    render()
+  }
 });
