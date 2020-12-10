@@ -1,9 +1,10 @@
-const {src, dest, series, parallel} = require('gulp');
+const {gulp, src, dest, series, parallel, task} = require('gulp');
 const cssnano = require('gulp-cssnano');
 const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const del = require('del');
+const surge = require('gulp-surge');
 
 function clean() {
   return del('dist');
@@ -34,7 +35,15 @@ function scriptsTask() {
     .pipe(dest('dist'));
 }
 
+function surgeDeploy() {
+  return surge({
+    project: './dist',
+    domain: 'leolibrary.surge.sh', 
+  });
+}
+
 exports.html = htmlTask;
 exports.styles = stylesTask;
 exports.scripts = scriptsTask;
 exports.default = series(clean, htmlTask, parallel(scriptsTask, stylesTask));
+exports.deploy = surgeDeploy;
