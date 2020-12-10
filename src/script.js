@@ -1,4 +1,4 @@
-const form = document.querySelector('form');
+const form = document.querySelector('.form');
 const addBookButton = document.querySelector('.button');
 const submitButton = document.querySelector('#submitButton');
 const bookName = document.querySelector('#bookName');
@@ -51,13 +51,14 @@ function render() {
   console.log(library);
   books.innerHTML = '';
   library.forEach(book => {
+    let readedStatusText = book.isReaded === 'true' ? 'Readed' : 'Not Readed';
     const bookHTLM = `
       <div class="book">
         <button id="delete">❌</button>
-        <div id="bookName">${book.bookName}</div>
-        <div id="author">${book.author}</div>
-        <div id="pagesNum">${book.pagesNum}</div>
-        <button>${book.isReaded}</button>
+        <div id="bookName">📚 ${book.bookName} 📚</div>
+        <div id="author">🧍 ${book.author} 🧍</div>
+        <div id="pagesNum">. ${book.pagesNum} pages .</div>
+        <div id="isReaded">${readedStatusText}</div>
       </div>
     `;
     books.innerHTML += bookHTLM;
@@ -75,7 +76,7 @@ function findBook(bookName) {
     if (book.bookName === bookName) {
       return library.indexOf(book);
     }
-  };
+  }
 }
 
 form.addEventListener('submit', function (e) {
@@ -84,6 +85,7 @@ form.addEventListener('submit', function (e) {
   updateLocalStorage();
   clearForm();
   render();
+  location.reload();
 });
 
 addBookButton.addEventListener('click', function () {
@@ -95,9 +97,14 @@ books.addEventListener('click', function (e) {
   const target = e.target.parentNode;
   console.log(target.closest('.book'));
   if (e.target.id == 'delete') {
-    let index= findBook(target.querySelector('#bookName').innerHTML);
+    let index = findBook(target.querySelector('#bookName').innerHTML);
     deleteBook(index);
-    updateLocalStorage()
-    render()
+    updateLocalStorage();
+    render();
+  location.reload();
   }
 });
+
+const timeline = gsap.timeline({default: {ease: 'power1.out'}});
+
+timeline.to('.book', {y: '0%', duration: 0.5, stagger: 0.25, opacity: 1});

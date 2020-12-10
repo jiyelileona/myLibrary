@@ -5,6 +5,7 @@ body {
   font-family: Georgia, 'Times New Roman', Times, serif;
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 .nav-bar {
@@ -49,33 +50,40 @@ div.button {
   transform: rotate(45deg);
 }
 
-form {
+.form {
+  position: fixed;
+  z-index: -10;
+  right: 0;
+  overflow: auto;
   background-color: #c6adef;
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
-  height: 50vh;
-  align-items: center;
+  width: 50%;
+  height: 50%;
   margin: auto;
   margin-right: 0%;
   justify-content: space-evenly;
-  clip-path: circle(100px at 95% -40%);
+  clip-path: circle(50px at 95% -40%);
   transition: all 0.6s cubic-bezier(0.42, 0, 1, 1);
 }
 
-form.open {
+.form.open {
+  z-index: 100;
   clip-path: circle(1000px at 90% -30%);
 }
 
-.form {
-  z-index: 100;
-  position: absolute;
-  right: 0;
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1rem;
 }
 
 input[type='text'] {
   line-height: 1.25rem;
   border-radius: 0.5rem;
+}
+
+label {
+  padding: 1rem 0;
 }
 
 #submitButton {
@@ -84,11 +92,10 @@ input[type='text'] {
   background: #ffffff;
   font-size: 0.9em;
   text-align: center;
-  width: 4em;
+  width: 6em;
 }
 
 #library {
-  position: relative;
   display: grid;
   grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(autofill, minmax(50%, 75%));
@@ -97,8 +104,34 @@ input[type='text'] {
 .book {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  padding: 5%;
+  border: 3px solid black;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
   margin: 5%;
   background-color: #efaaae;
+  position: relative;
+  transform: translateY(50%);
+  opacity: 0.5;
+}
+
+#delete {
+  position: absolute;
+  width: 16%;
+  right: 0;
+  top: 0;
+  margin: 0.5rem 0.5rem;
+  padding: 0.25rem 0;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;;
+}
+
+div.book div {
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+div.book #bookName {
+  font-size: 1.5rem;
 }
