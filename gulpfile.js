@@ -1,4 +1,4 @@
-const {gulp, src, dest, series, parallel, task} = require('gulp');
+const {src, dest, series, parallel} = require('gulp');
 const cssnano = require('gulp-cssnano');
 const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
