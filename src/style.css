@@ -97,7 +97,7 @@ label {
 
 #library {
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(4, 25%);
   grid-template-rows: repeat(autofill, minmax(50%, 75%));
 }
 
@@ -134,4 +134,5 @@ div.book div {
 
 div.book #bookName {
   font-size: 1.5rem;
+  padding-top: 1rem;
 }

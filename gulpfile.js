@@ -38,7 +38,7 @@ function scriptsTask() {
 function surgeDeploy() {
   return surge({
     project: './dist',
-    domain: 'leolibrary.surge.sh', 
+    domain: 'https://leolibrary.surge.sh', 
   });
 }
 
