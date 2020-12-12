@@ -5,6 +5,7 @@ const bookName = document.querySelector('#bookName');
 const author = document.querySelector('#author');
 const pagesNum = document.querySelector('#pagesNumber');
 const books = document.querySelector('#library');
+const timeline = gsap.timeline({default: {ease: 'power1.out'}});
 let library = [];
 
 class Book {
@@ -61,7 +62,8 @@ function render() {
         <div id="isReaded">${readedStatusText}</div>
       </div>
     `;
-    books.innerHTML += bookHTML;
+    books.innerHTML += bookHTLM;
+    timeline.to('.book', {y: '0%', duration: 0.5, stagger: 0.25, opacity: 1});
   });
 }
 
@@ -85,7 +87,6 @@ form.addEventListener('submit', function (e) {
   updateLocalStorage();
   clearForm();
   render();
-  location.reload();
 });
 
 addBookButton.addEventListener('click', function () {
@@ -101,10 +102,5 @@ books.addEventListener('click', function (e) {
     deleteBook(index);
     updateLocalStorage();
     render();
-  location.reload();
   }
 });
-
-const timeline = gsap.timeline({default: {ease: 'power1.out'}});
-
-timeline.to('.book', {y: '0%', duration: 0.5, stagger: 0.25, opacity: 1});
