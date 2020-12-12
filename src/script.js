@@ -62,7 +62,7 @@ function render() {
         <div id="isReaded">${readedStatusText}</div>
       </div>
     `;
-    books.innerHTML += bookHTLM;
+    books.innerHTML += bookHTML;
     timeline.to('.book', {y: '0%', duration: 0.5, stagger: 0.25, opacity: 1});
   });
 }
