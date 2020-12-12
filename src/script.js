@@ -53,7 +53,7 @@ function render() {
   books.innerHTML = '';
   library.forEach(book => {
     let readedStatusText = book.isReaded === 'true' ? 'Read' : 'Uread';
-    const bookHTLM = `
+    const bookHTML = `
       <div class="book">
         <button id="delete">❌</button>
         <div id="bookName">📚 ${book.bookName} 📚</div>
