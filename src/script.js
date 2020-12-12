@@ -49,7 +49,6 @@ function checkLocalStorage() {
 
 function render() {
   checkLocalStorage();
-  console.log(library);
   books.innerHTML = '';
   library.forEach(book => {
     let readedStatusText = book.isReaded === 'true' ? 'Read' : 'Uread';
